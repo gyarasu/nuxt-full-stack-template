@@ -7,10 +7,6 @@
 
 <script>
 export default {
-  fetch ({ store, redirect }) {
-    if (!store.state.authUser) {
-      return redirect('/');
-    }
-  },
+  middleware: 'authenticated',
 };
 </script>
