@@ -1,7 +1,12 @@
+// set env
+process.env.NODE_CONFIG_DIR = `${__dirname}/config`;
+
+// import modules
 const { Nuxt, Builder } = require('nuxt');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = require('express')();
+const config = require('config');
 
 app.use(bodyParser.json());
 
