@@ -8,6 +8,7 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const app = require('express')();
 const config = require('config');
+const routes = require('./routes');
 
 app.use(bodyParser.json());
 
@@ -33,6 +34,9 @@ app.use(session({
     maxAge: 86400000,
   },
 }));
+
+// API Routes
+app.use(routes.auth);
 
 const isProd = !process.env.NODE_ENV === 'development';
 const nuxt = new Nuxt({ dev: !isProd });
