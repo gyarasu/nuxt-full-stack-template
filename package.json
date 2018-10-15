@@ -16,7 +16,9 @@
     "body-parser": "^1.18.3",
     "config": "^2.0.1",
     "express": "^4.16.4",
+    "express-mysql-session": "^2.0.1",
     "express-session": "^1.15.6",
+    "mysql": "^2.16.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
