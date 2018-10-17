@@ -25,17 +25,17 @@ const actions = {
         password,
       }),
     })
-      .then((res) => {
-        if (res.status === 401) {
-          throw new Error('Bad credentials');
-        } else {
-          return res.json();
-        }
-      })
-      .then((authUser) => {
-        commit('setUser', authUser);
-        window.location.href = '/secret';
-      });
+    .then((res) => {
+      if (res.status === 401) {
+        throw new Error('Bad credentials');
+      } else {
+        return res.json();
+      }
+    })
+    .then((authUser) => {
+      commit('setUser', authUser);
+      window.location.href = '/secret';
+    });
   },
 
   logout({ commit }) {
@@ -43,10 +43,10 @@ const actions = {
       credentials: 'same-origin',
       method: 'POST',
     })
-      .then(() => {
-        commit('setUser', null);
-        window.location.href = '/';
-      });
+    .then(() => {
+      commit('setUser', null);
+      window.location.href = '/';
+    });
   },
 };
 

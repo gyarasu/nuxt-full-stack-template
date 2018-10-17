@@ -11,7 +11,7 @@ const dummyPassWord = '123123';
 // LOGIN API
 router.post('/api/auth/login', (req, res, next) => {
   if (req.body.email === dummyEmail && req.body.password === dummyPassWord) {
-    req.session.authUser = { username: req.body.email };
+    req.session.authUser = { email: req.body.email };
 
     // insert latest login
     const query = connection.query('INSERT INTO t_latest_login_history SET ? ON DUPLICATE KEY UPDATE ?', [{
@@ -55,4 +55,4 @@ router.post('/api/auth/logout', (req, res, next) => {
   });
 });
 
-module.exports = router
+module.exports = router;
