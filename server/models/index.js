@@ -1,3 +1,5 @@
+// TODO: Manage connection pool and transaction
+
 const mysql = require('mysql');
 const config = require('config');
 
