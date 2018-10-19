@@ -1,6 +1,7 @@
 # nuxt-full-stack-template
 
 > Nuxt full stack template for creating web app easily.
+![demo](https://raw.githubusercontent.com/wiki/gyarasu/nuxt-full-stack-template/img/nft.gif)
 
 ## Build Setup
 
