@@ -39,7 +39,7 @@ app.use(session({
 app.use(routes.auth);
 app.use(routes.users);
 
-const isProd = !process.env.NODE_ENV === 'development';
+const isProd = !(process.env.NODE_ENV === 'development');
 const nuxt = new Nuxt({ dev: !isProd });
 
 if (!isProd) {
