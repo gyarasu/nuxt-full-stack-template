@@ -55,8 +55,10 @@ if (!isProd) {
   builder.build();
 }
 
+const port = process.env.PORT || 3000;
+
 app.use(nuxt.render);
-app.listen(3000);
+app.listen(port);
 
 console.log('Server is listening on http://localhost:3000');
 

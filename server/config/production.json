@@ -1,5 +1,5 @@
 {
-  "env": "development",
+  "env": "production",
   "log": {
     "appenders": {
       "app": {
@@ -31,6 +31,8 @@
         ],
         "level": "error"
       }
-    }
+    },
+    "pm2": true,
+    "pm2InstanceVar": "MYAPP"
   }
 }
