@@ -22,11 +22,7 @@ router.post('/api/auth/login', (req, res, next) => {
       update_date: new Date(),
     }], (error) => {
       if (error) {
-        console.log('error', error);
-        // TODO: Replace it for Error Handler
-        return res.status(500).json({
-          status: 'Something Wrong on Server.',
-        });
+        next(error);
       } else {
         return res.status(200).json({
           status: 'ok',

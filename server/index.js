@@ -10,6 +10,7 @@ const app = require('express')();
 const config = require('config');
 const routes = require('./routes');
 const logger = require('./helpers/logger');
+const errorHandler = require('./middlewares/errorHandler');
 
 // access log
 app.use(logger.access);
@@ -42,6 +43,9 @@ app.use(session({
 // API Routes
 app.use(routes.auth);
 app.use(routes.users);
+
+// Error Handler
+app.use(errorHandler);
 
 const isProd = !(process.env.NODE_ENV === 'development');
 const nuxt = new Nuxt({ dev: !isProd });
