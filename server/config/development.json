@@ -6,5 +6,38 @@
     "user": "myapp_user",
     "password": "myapp_password",
     "database": "myapp"
+  },
+  "log": {
+    "appenders": {
+      "app": {
+        "type": "console"
+      },
+      "error": {
+        "type": "console"
+      },
+      "access": {
+        "type": "console"
+      }
+    },
+    "categories": {
+      "default": {
+        "appenders": [
+          "access"
+        ],
+        "level": "info"
+      },
+      "app": {
+        "appenders": [
+          "app"
+        ],
+        "level": "trace"
+      },
+      "error": {
+        "appenders": [
+          "error"
+        ],
+        "level": "error"
+      }
+    }
   }
 }

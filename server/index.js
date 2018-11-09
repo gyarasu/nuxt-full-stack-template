@@ -9,6 +9,10 @@ const MySQLStore = require('express-mysql-session')(session);
 const app = require('express')();
 const config = require('config');
 const routes = require('./routes');
+const logger = require('./helpers/logger');
+
+// access log
+app.use(logger.access);
 
 app.use(bodyParser.json());
 
