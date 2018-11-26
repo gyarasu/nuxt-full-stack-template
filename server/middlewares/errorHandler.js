@@ -4,8 +4,8 @@ module.exports = (err, req, res, next) => {
   // TODO: Add Notification
   logger.error(err);
 
-  if (res.headerSent) {
-    return next(err);
+  if (res.headersSent) {
+    return next();
   }
 
   return res.status(500).json({
