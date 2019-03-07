@@ -13,40 +13,36 @@ export const actions = {
     }
   },
 
-  login({ commit }, { email, password }) {
-    return fetch('/api/auth/login', {
-      credentials: 'same-origin',
+  async login({ commit }, { email, password }) {
+    const options = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+      url: '/api/auth/login',
+      data: {
         email,
         password,
-      }),
-    })
-    .then((res) => {
-      if (res.status === 401) {
-        throw new Error('Bad credentials');
-      } else {
-        return res.json();
-      }
-    })
-    .then((authUser) => {
-      commit('setUser', authUser);
+      },
+    };
+
+    const res = await this.$axios(options);
+
+    if (res.status === 200) {
+      commit('setUser', res.data.authUser);
       window.location.href = '/secret';
-    });
+    }
   },
 
-  logout({ commit }) {
-    return fetch('/api/auth/logout', {
-      credentials: 'same-origin',
+  async logout({ commit }) {
+    const options = {
       method: 'POST',
-    })
-    .then(() => {
+      url: '/api/auth/logout',
+    };
+
+    const res = await this.$axios(options);
+
+    if (res.status === 200) {
       commit('setUser', null);
       window.location.href = '/';
-    });
+    }
   },
 };
 

@@ -32,7 +32,7 @@ router.post('/api/auth/login', (req, res, next) => {
       });
     } else {
       return res.status(401).json({
-        error: 'Bad credentials',
+        message: 'Bad credentials',
       });
     }
   } catch(err) {

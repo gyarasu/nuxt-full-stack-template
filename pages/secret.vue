@@ -28,17 +28,17 @@ export default {
   },
   methods: {
     ...mapActions(['logout']),
-    getLatestLogin() {
-      fetch('/api/users/login-history', {
-        credentials: 'same-origin',
+    async getLatestLogin() {
+      const options = {
         method: 'GET',
-      })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.latestLogin = data.latestLogin;
-      });
+        url: '/api/users/login-history',
+      };
+
+      const res = await this.$axios(options);
+
+      if (res.status === 200) {
+        this.latestLogin = res.data.latestLogin;
+      }
     },
   },
 };
