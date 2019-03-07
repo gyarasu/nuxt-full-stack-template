@@ -11,6 +11,7 @@ const config = require('config');
 const routes = require('./routes');
 const logger = require('./helpers/logger');
 const errorHandler = require('./middlewares/errorHandler');
+const nuxtConfig = require('../nuxt.config.js');
 
 // access log
 app.use(logger.access);
@@ -47,10 +48,13 @@ app.use(routes.users);
 // Error Handler
 app.use(errorHandler);
 
-const isProd = !(process.env.NODE_ENV === 'development');
-const nuxt = new Nuxt({ dev: !isProd });
+// Set Environment to Nuxt Config
+nuxtConfig.dev = process.env.NODE_ENV === 'development';
+const nuxt = new Nuxt(nuxtConfig);
 
-if (!isProd) {
+// run build process when the environment is development
+if (nuxtConfig.dev) {
+  logger.app.debug('Development Mode: Build')
   const builder = new Builder(nuxt);
   builder.build();
 }
