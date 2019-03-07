@@ -1,7 +1,16 @@
 module.exports = {
   /*
-  ** Headers of the page
+  ** modules
   */
+  modules: [
+    '@nuxtjs/axios',
+  ],
+  /*
+  ** axios module options
+  * https://axios.nuxtjs.org/options
+  */
+  axios: {
+  },
   head: {
     title: 'nuxt-full-stack-template',
     meta: [
@@ -13,6 +22,12 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  /*
+  ** modules
+  */
+  plugins: [
+    { src: '@/plugins/axios.js', ssr: false },
+  ],
   /*
   ** Customize the progress bar color
   */

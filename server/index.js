@@ -42,8 +42,11 @@ app.use(session({
 }));
 
 // API Routes
-app.use(routes.auth);
-app.use(routes.users);
+const routeKeys = Object.keys(routes);
+for (let i = 0; i < routeKeys.length; i += 1) {
+  app.use(routes[routeKeys[i]]);
+}
+
 
 // Error Handler
 app.use(errorHandler);

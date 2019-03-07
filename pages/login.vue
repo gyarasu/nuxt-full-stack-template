@@ -12,7 +12,7 @@
     <div class="links">
       <a
         href="#"
-        v-on:click="login({ email, password})"
+        v-on:click="login({ email, password })"
         class="button--green">Login</a>
     </div>
   </div>
