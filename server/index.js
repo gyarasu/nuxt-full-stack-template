@@ -55,6 +55,11 @@ app.use(errorHandler);
 nuxtConfig.dev = process.env.NODE_ENV === 'development';
 const nuxt = new Nuxt(nuxtConfig);
 
+// SEE: https://github.com/nuxt/nuxt.js/releases/tag/v2.5.0
+(async () => {
+  await nuxt.ready();
+})();
+
 // run build process when the environment is development
 if (nuxtConfig.dev) {
   logger.app.debug('Development Mode: Build')
