@@ -26,12 +26,18 @@ module.exports = {
   ** modules
   */
   plugins: [
-    { src: '@/plugins/axios.js', ssr: false },
+    { src: '@/plugins/axios.js', ssr: true },
   ],
   /*
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+  /*
+  ** serverside
+   */
+  serverMiddleware: [
+    '~/server'
+  ],
   /*
   ** Build configuration
   */

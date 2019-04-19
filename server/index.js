@@ -2,7 +2,6 @@
 process.env.NODE_CONFIG_DIR = `${__dirname}/config`;
 
 // import modules
-const { Nuxt, Builder } = require('nuxt');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
@@ -11,7 +10,6 @@ const config = require('config');
 const routes = require('./routes');
 const logger = require('./helpers/logger');
 const errorHandler = require('./middlewares/errorHandler');
-const nuxtConfig = require('../nuxt.config.js');
 
 // access log
 app.use(logger.access);
@@ -51,26 +49,7 @@ for (let i = 0; i < routeKeys.length; i += 1) {
 // Error Handler
 app.use(errorHandler);
 
-// Set Environment to Nuxt Config
-nuxtConfig.dev = process.env.NODE_ENV === 'development';
-const nuxt = new Nuxt(nuxtConfig);
-
-// SEE: https://github.com/nuxt/nuxt.js/releases/tag/v2.5.0
-(async () => {
-  await nuxt.ready();
-})();
-
-// run build process when the environment is development
-if (nuxtConfig.dev) {
-  logger.app.debug('Development Mode: Build')
-  const builder = new Builder(nuxt);
-  builder.build();
-}
-
-const port = process.env.PORT || 3000;
-
-app.use(nuxt.render);
-app.listen(port);
-
-console.log('Server is listening on http://localhost:3000');
-
+module.exports = {
+  path: '/api',
+  handler: app,
+};
