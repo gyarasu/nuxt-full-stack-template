@@ -56,6 +56,6 @@ $ yarn start
 ## Run Cluster Mode
 
 ```bash
-$ pm2 start pm2.config.yml --env production
+$ pm2 startOrRestart ecosystem.config.js --env production
 ```
 
