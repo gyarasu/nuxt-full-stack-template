@@ -44,14 +44,14 @@ To use `log4-js` on cluster mode and to output logfile properly,
 
 ``` bash
 # install dependencies
-$ npm install # Or yarn install
+$ yarn install
 
 # serve with hot reload at localhost:3000
-$ npm run dev
+$ yarn dev
 
 # build for production and launch server
-$ npm run build
-$ npm start
+$ yarn build
+$ yarn start
 ```
 ## Run Cluster Mode
 
