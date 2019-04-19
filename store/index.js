@@ -1,13 +1,19 @@
-import Vuex from 'vuex';
-
 export const state = () => ({
   authUser: null,
 });
 
 export const actions = {
-  nuxtServerInit({ commit }, { req }) {
-    if (req.session && req.session.authUser) {
-      commit('setUser', req.session.authUser);
+  async nuxtServerInit({ commit }) {
+    // get auth info from session
+    const options = {
+      method: 'GET',
+      url: '/api/auth/info',
+    };
+
+    const res = await this.$axios(options);
+
+    if (res.data.authUser) {
+      commit('setUser', res.data.authUser);
     } else {
       commit('setUser', null);
     }

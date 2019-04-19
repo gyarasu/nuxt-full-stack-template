@@ -3,9 +3,9 @@ const { connection } = require('../models');
 const authenticated = require('../middlewares/authenticated');
 const router = Router();
 
-router.use('/api/users/', authenticated);
+router.use('/users/', authenticated);
 
-router.get('/api/users/login-history', (req, res, next) => {
+router.get('/users/login-history', (req, res, next) => {
   try {
     const query = connection.query('SELECT update_date from t_latest_login_history WHERE user_id = ?',[
       req.session.authUser.email
