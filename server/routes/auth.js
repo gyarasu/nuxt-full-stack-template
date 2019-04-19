@@ -9,7 +9,7 @@ const dummyEmail = 'user.sample@myapp.com';
 const dummyPassWord = '123123';
 
 // LOGIN API
-router.post('/api/auth/login', (req, res, next) => {
+router.post('/auth/login', (req, res, next) => {
   try {
     if (req.body.email === dummyEmail && req.body.password === dummyPassWord) {
       req.session.authUser = { email: req.body.email };
@@ -42,7 +42,7 @@ router.post('/api/auth/login', (req, res, next) => {
 
 
 // LOGOUT API
-router.post('/api/auth/logout', (req, res, next) => {
+router.post('/auth/logout', (req, res, next) => {
   try {
     req.session.destroy((err) => {
       if (err) {
@@ -55,6 +55,17 @@ router.post('/api/auth/logout', (req, res, next) => {
       status: 'ok',
     });
   } catch(err) {
+    next(err);
+  }
+});
+
+// AuthInfo
+router.get('/auth/info', (req, res, next) => {
+  try {
+    return res.status(200).json({
+      authUser: req.session.authUser,
+    });
+  } catch (err) {
     next(err);
   }
 });
