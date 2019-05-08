@@ -17,13 +17,16 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
 import AppLogo from '~/components/AppLogo.vue'
 
-export default {
+@Component({
   components: {
     AppLogo
   }
+})
+export default class Index extends Vue {
 }
 </script>
 

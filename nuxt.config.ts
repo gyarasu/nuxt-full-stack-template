@@ -1,4 +1,6 @@
-module.exports = {
+import NuxtConfiguration from '@nuxt/config';
+
+const config: NuxtConfiguration = {
   /*
   ** modules
   */
@@ -47,6 +49,7 @@ module.exports = {
     */
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
+        if (!config.module) return;
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -58,3 +61,4 @@ module.exports = {
   }
 }
 
+export default config;

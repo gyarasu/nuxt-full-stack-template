@@ -24,10 +24,15 @@
     "nuxt": "^2.6.3"
   },
   "devDependencies": {
+    "@nuxt/typescript": "^2.6.3",
+    "@typescript-eslint/parser": "^1.7.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.2",
-    "eslint-plugin-vue": "^5.2.2"
+    "eslint-plugin-vue": "^5.2.2",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5",
+    "vue-property-decorator": "^8.1.0"
   }
 }
